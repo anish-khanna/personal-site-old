@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Anish Khanna</title>
+    {% load static %}
+    <link rel="icon" type="image/jpg" href="{% static 'images/prof%20pic.jpg' %}">
+    <link rel="stylesheet" href="{% static 'assets/fontawesome-free-5.2.0-web/css/all.min.css' %}">
+    <script src="{% static 'assets/js/lib/plotly-latest.min.js' %}"></script>
+    <script src="{% static 'assets/js/lib/jquery-3.3.1.min.js' %}"></script>
+    <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
+    <script src="{% static 'assets/js/lib/bootstrap.bundle.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="{% static 'assets/js/index.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'assets/css/index.css' %}">
+</head>
+
+<!--Welcome to my code, this is always a work in project and will be updated. The backend for the stock predictor is still under construction and should be up in a couple of days! -->
+    
+<body>
+    <div class="jumbotron" id="Intro">
+        <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 jumbo-text">
+                <h1>
+                    Hi! I'm Anish Khanna!
+                </h1> 
+                <p>
+                    I'm a Computer Engineering student at the University of Waterloo. I am interested in many fields of computers and software, from Web Dev to Machine Learning!
+                </p>
+                <p>
+                    On this site you'll find a little bit about me and some projects that tie in everything that I like to work on. There's an AI based stock predictor and a blog where I'll be sharing anything and everything that comes to mind. 
+                </p>
+                
+                <p>
+                    You can also find a little bit of art that I've worked on towards a streetwear collective named "vsn". 
+                </p>
+                <p>
+                    Feel free to check it all out and contact me with any requests or comments.
+                </p>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="{% static 'images/prof pic.jpg' %}" id="displayPic" alt="Profile Picture">
+                <div class="row text-center">
+                    <div class = "col-md-4 text-center">
+                        <a href="mailto:anish.khanna99@gmail.com" class="btn btn-default btn-block" id="email-btn"><i class="fas fa-envelope fa-lg"></i></a>
+                    </div>
+                    <div class = "col-md-4 text-center">
+                        <a target="_blank" href= "http://www.linkedin.com/in/anish-khanna99" class="btn btn-default btn-block" id="linkedin-btn"><i class="fab fa-linkedin fa-lg"></i></a>
+                    </div>
+                    <div class = "col-md-4 text-center">
+                        <a target="_blank" href= "http://www.github.com/anish-khanna" class="btn btn-default btn-block" id="github-btn"><i class="fab fa-github fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-expand-med navbar-expand-sm navbar-custom">
+        <a class="navbar-brand scroll-link">Anish</a>
+        <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link scroll-link" id="#Intro" href="#Intro">About Me</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link scroll-link" id="StocksNav" href="#Stocks">Stocks</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link scroll-link" id="VSNNav" href="#VSN">vsn</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link scroll-link" id="BlogNav" href="#Blog">Blog</a>
+                </li>
+             </ul>
+        </div>
+    </nav>
+    <div class="section container-fluid" id="Stocks">
+        <div class="row no-gutters">
+            <div class="col-8 mx-auto text-center">
+                <h1>
+                    Stock Market Performance Predictor
+                </h1>
+            </div>
+        </div>
+        <div class="row no-gutters">
+            <div class="col-8 mx-auto text-center">
+                <p>
+                    I've always been interested in stocks and how the economy works. I would hear stories about Wall Street Investors making loads of money just by predicting the movement of a stock. I don't have that kind of know-how or balls really, but I thought what better idea than to build an app that would connect my interest in stocks with something I do know a bit about, Machine Learning.
+                </p>
+                <p>
+                    Play around with the chart and maybe even make your next big trade with its help. You never know, the machine might know a bit more about trading than you do.
+                </p>
+            </div>
+        </div>
+        <div id="StocksGraph">
+        </div>
+        <img id="loader" alt="loader" src="{% static 'images/ajax-loader.gif' %}">
+        <div class="row no-gutters">
+            <div class="col-10 mx-auto text-center">
+        <div id="StocksForm">
+                <form action="/stockCode/" method="POST" id="StockInputForm">
+                    {% csrf_token %}
+                    <label for="StockCodeInput">Ticker Symbol</label>
+                    <input type='text' class="form-control" id="StockCodeInput" aria-describedby="StockHelp" placeholder="Symbol">
+                    <small id="StockHelp" class="form-text text-muted">Input the NYSE ticker symbol of the stock that you are looking to predict</small>
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="section container-fluid" id="VSN">
+        <div class="row no-gutters">
+            <div class="col-md mx-auto text-center">
+                <img id="vsnHeader" src="{% static 'images/vsn logo no bg.png' %}">
+            </div>
+        </div>
+        <div class="row no-gutters">
+            <div class="col-sm mx-auto text-center">
+                <p>
+                    vsn is a streetwear and art collective started by myself. vsn follows a darker tone, juxtaposing the literal meaning of the word and the brand's art.
+                </p>
+                <p>
+                    the work here serves as a platform for creative ideas to be brought out through art and fashion.
+                </p>
+            </div>
+        </div>
+        <div class="row no-gutters">
+            <div class="col-md-6 mx-auto text-center" style="margin-top: auto; margin-bottom: auto">
+                <img src="{% static 'images/scene 1.png' %}" class="vsnImg img-fluid">
+            </div>
+            <div class="col-md-6 mx-auto text-center">
+                <img src="{% static 'images/pearl earring.png' %}" class="vsnImg img-fluid">
+            </div>
+        </div>
+    </div>
+    <div class="section container-fluid" id="Blog">
+        <div class="row no-gutters">
+            <div class="col-12 mx-auto text-center">
+                <div class="container">
+                    <h1>
+                        I've Started a Blog!
+                    </h1>
+                    <p>
+                        You can find some short pieces that I've wrote discussing a variety of items. It might be related to computer technology or some armchair sports analysis or a piece on my view of some general philosophical topics or anything really. There's nothing really to be taken to serious but you can head over there and browse through it.
+                    </p>
+                    <h6>
+                        Psst leave a comment too.
+                    </h6>
+                    <a href="/blog">You can visit it at this link</a>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+</body>
+
+</html>

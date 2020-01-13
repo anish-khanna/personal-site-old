@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.9.0"></script>
+
+    </head>
+<body>
+<h1>What is good child?</h1>
+<h2>heading number 2</h2>
+<h3>3rd one</h3>
+<h4>4th incoming</h4>
+<h5>here is number five</h5>
+<h6>and numero six</h6>
+
+<p title="this a title">Not much pops</p>
+
+<a href="https://www.facebook.com">link ting fam</a>
+<button onClick="myFunction">Try it</button>
+    <script>
+            function myFunction(){
+        document.open();
+        document.write("<h1>HI prediction</h1>");
+        const model = tf.loadModel('http:///Users/anishkhanna/Documents/Work/BD Test/js model2/model.json');
+        const example = tf.fromPixels('http:///Users/anishkhanna/Documents/Work/dataset2/single_prediction/1.jpg');
+        const prediction = model.predict(example); 
+        this.predictions = Array.from(prediction.datasync())[0]
+        console.log("nice")
+        /*if prediction == 0{
+            console.log("pass");
+            document.write("<p> pass </p>")
+        }
+        else{
+            console.log("fail");
+            document.write("<p> fail </p>")
+        }*/
+        document.close();
+    }
+</script>
+</body>
+</html>

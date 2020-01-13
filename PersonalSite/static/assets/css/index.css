@@ -1,0 +1,165 @@
+body{
+    padding-top: 50px;
+}
+
+.jumbotron{
+    height: 100%;
+    margin-bottom: 0;
+    color: darkslateblue;
+}
+
+.jumbo-text{
+    margin-top: 12%;
+    padding-left: 5%;
+}
+
+.navbar-custom {
+    color: white;
+    background-color: rgb(100, 100, 150);
+    -webkit-box-shadow: 0 8px 10px -3px #999;
+    -moz-box-shadow: 0 8px 10px -3px #999;
+    box-shadow: 0 8px 10px -3px #999;
+}
+
+.nav-link{
+    color: white;
+}
+
+.nav-link:hover{
+    color: lightgray;
+}
+
+.navbar-brand{
+    color: white;
+}
+
+.navbar-brand:hover{
+    color: lightgray;
+}
+
+.navbar-fixed-top.scrolled {
+  background-color: grey !important;
+  transition: background-color 200ms linear;
+}
+
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+#displayPic{
+    border-radius: 50%;
+    border: 2px solid lightsteelblue;
+    width: 30vw;
+    height: auto;
+    margin-bottom: 40px;
+    margin-top: 50px;
+}
+
+.fa-lg{
+    padding: 0px 10px;
+}
+
+#Stocks{
+    padding-top: 50px;
+    padding-bottom: 100px;
+}
+
+#Intro{
+    padding-top: 50px;
+}
+
+#StocksInput{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin: 20px;
+}
+
+#VSN{
+    background-color: black;
+    color: white;
+    padding: 50px 0px;
+    margin-top: -50px;
+}
+
+#vsnHeader{
+    padding-bottom: 25px;
+    max-width: 30%;
+    height: auto;
+}
+
+.vsnImg{
+    background-color: white;
+    max-width: 75%;
+    height: auto;
+    margin: 10px 0px;
+    border: 5px solid darkred;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    transition: transform 150ms ease-in-out;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.vsnImg:hover{
+    -webkit-filter: grayscale(0%);
+    filter: none;
+}
+
+#Blog{
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+#StockCodeInput{
+    width: 100px;
+    float: none;
+    margin: 0 auto;
+}
+
+#loader{
+    display:none;
+    margin:auto
+}
+
+.btn-default{
+    border: 2px lightsteelblue solid;
+    padding: 20px;
+    margin-bottom: 20px;
+    color: white;
+    background-color: slategray;
+    font-size: 1.5rem;
+}
+
+.btn-default:hover{
+    color:cornflowerblue;
+    background-color: lightgrey;
+    border-color: black;
+}
+
+@media screen and (max-width: 900px) {
+  .timeline ul div div li div {
+    width: 250px;
+  }
+  .timeline ul div div li:nth-child(even) div {
+    left: -289px;
+    /*250+45-6*/
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .timeline ul div div li {
+    margin-left: 20px;
+  }
+  .timeline ul div div li div {
+    width: calc(100vw - 91px);
+  }
+  .timeline ul div div li:nth-child(even) div {
+    left: 45px;
+  }
+  .timeline ul div div li:nth-child(even) div::before {
+    left: -15px;
+    border-width: 8px 16px 8px 0;
+    border-color: transparent #F45B69 transparent transparent;
+  }
+}

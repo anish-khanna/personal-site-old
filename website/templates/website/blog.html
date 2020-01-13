@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Anish Khanna</title>
+    {% load static %}
+    <link rel="icon" type="image/jpg" href="{% static 'images/prof%20pic.jpg' %}">
+    <link rel="stylesheet" href="{% static 'assets/fontawesome-free-5.2.0-web/css/all.min.css' %}">
+    <script src="{% static 'assets/js/lib/plotly-latest.min.js' %}"></script>
+    <script src="{% static 'assets/js/lib/jquery-3.3.1.min.js' %}"></script>
+    <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
+    <script src="{% static 'assets/js/lib/bootstrap.bundle.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="{% static 'assets/js/blog.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'assets/css/blog.css' %}">
+</head>
+    
+<body>
+    <div class="jumbotron" id="Intro">
+        <div class="row">
+            <div class="col-sm-12 jumbo-text text-center">
+                <h1>
+                    Hey! You've reached my blog!
+                </h1> 
+                <p>
+                    This is where I write down all my ideas. Theres a wide range of content here so don't be scared if one piece doesn't have any relation to the next!
+                </p>
+            </div>
+        </div>
+        <div class="row text-center">
+            <a href='/' class='mx-auto'><button type="button" class="btn btn-outline-primary mx-auto">Click Me to Return Home</button></a>
+        </div>
+        <div class="container imgCollection">
+            <div class="row">
+            {% for post in post_list %}
+                <div class="col-sm-4">
+                    <a class="scroll-link" href="#post{{post.id}}"><img class="thumbImage img-thumbnail" src={{post.Image.url}}></a>
+                </div>
+            {% endfor %}
+        </div>
+        </div>
+    </div>
+    <div class="container postsContainer">
+        {% for post in post_list %}
+            <div id="p{{post.id}}" class="postID">
+                <h1 class="postTitle" id="post{{post.id}}">{{ post.Title }}</h1>
+                <h4 class="postCaption">{{ post.Caption }}</h4>
+                <img class="postImage" src={{ post.Image.url }}>
+                <h6 class="postDate">{{ post.pub_date }}</h6>
+                <div class="truncate"><p>{{ post.Content|linebreaksbr }}</p></div>
+                <div class="commentSection">
+                    {% if post.comments.all.exists %}
+                        <h5 class="commentsHeader commentElement">Comments</h5>
+                        {% for comment in post.comments.all %}
+                            <p class="comment commentElement"><strong>{{comment.name}}:</strong> {{ comment.comment_text}}</p>
+                            <p class="comment commentPublishTime">{{comment.pub_date}}</p> 
+                        <br>
+                        {% endfor %}
+                    {% endif %}
+                    <div class="commentForm" id="comment{{post.id}}">
+                        <button type="button" class="btn addComment commentElement" onload="commentAdder">Add Comment</button>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <button onclick="topFunction()" id="topBtn" title="Go to top"><i class="fas fa-chevron-up"></i></button>
+     
+</body>
+
+</html>
